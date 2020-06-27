@@ -1,0 +1,31 @@
+h2 {
+    margin: 20px;
+    text-align: center;
+}
+mat-list-option {
+    text-align: center;
+}
+mat-card {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    top: 30px;
+}
+#bg {
+    background-image: url("../../../assets/dashboard-bg.jpg");
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-attachment: fixed;
+     bottom: 0px;
+     height: 100%;
+     position: relative;
+}
+mat-expansion-panel {
+    white-space:nowrap; 
+}
+
+#df {
+    margin-top: -45px;
+    float: right;
+}

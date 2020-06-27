@@ -1,0 +1,22 @@
+mat-card {
+    margin: auto;
+    max-width: 700px;
+  }
+  mat-form-field {
+    width: 100%;
+  }
+  #bg {
+    background-image: url("../../../assets/detail-bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    bottom: 0px;
+}
+
+mat-card {
+  background-color: #E3CAFA;
+  background-color:rgba(227, 202, 250, 0.4);
+}
+
+

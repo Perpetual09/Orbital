@@ -1,0 +1,42 @@
+<div id="bg">
+<div *ngIf="auth.afAuth.authState | async as user; else showLogin">
+    <div *ngIf="total <= 3; else random">
+        <section>
+        <p *ngFor="let post of posts | async" >
+        <mat-card>
+            <mat-card-content routerLink="{{post.id}}">
+                <img mat-card-image src="{{post.image}}" alt="{{post.title}}">
+                <h2>{{post.title}}</h2>
+                <p>
+                <small>Posted by {{post.author}} &bull; on {{post.published.toDate() | date: 'medium'}}</small>
+                </p>
+            </mat-card-content>
+        </mat-card>
+        </p>
+    </section>
+    </div>
+    <ng-template #random>
+        <section>
+        <p *ngFor="let post of recposts | async">
+            <mat-card>
+            <mat-card-content routerLink="../blog/{{post.id}}">
+                <div id="imgblock">
+                    <img mat-card-image src="{{post.image}}" alt="{{post.title}}" width="520" height="320">
+                </div>
+                <h2>{{post.title}}</h2>
+                <p>
+                <small>Posted by {{post.author}} &bull; on {{post.published.toDate() | date: 'medium'}}</small>
+                </p>
+                </mat-card-content>
+            </mat-card>
+        </p>
+    </section>
+    <button (click)="reloadPage()" mat-raised-button color="primary" id="rf">
+        <mat-icon>cached</mat-icon> refresh</button>
+    </ng-template>
+</div>
+<ng-template #showLogin>
+    <div class="animation">Here, build your own space ...</div>
+    <button mat-raised-button id="tin" (click)="auth.login()" color="primary">Try it now</button>
+</ng-template>
+</div>

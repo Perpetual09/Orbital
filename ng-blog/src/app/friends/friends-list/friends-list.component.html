@@ -1,0 +1,21 @@
+<div id="bg">
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Friend List</mat-card-title>
+        <mat-card-subtitle>Please select a friend to chat</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <div *ngFor="let friend of uFriends | async; index as i">
+        <mat-expansion-panel routerLink="/chat/{{friend}}" hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                User {{friend}}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+        </mat-expansion-panel>
+        <button id="df" mat-icon-button (click)="delete(i)"><mat-icon matRipple >delete</mat-icon></button>
+        </div>
+    </mat-card-content>
+</mat-card>
+</div>
+

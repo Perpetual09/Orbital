@@ -1,0 +1,43 @@
+<div id="bg">
+    <br>
+    <mat-card>
+        <mat-card-header>
+          <mat-card-title>Chat</mat-card-title>
+          <mat-card-subtitle>
+              <div>User</div> 
+              <div>{{receiverId}}</div>
+            </mat-card-subtitle>
+          <button mat-button routerLink="/friendlist" id="fw"><mat-icon>forward</mat-icon></button>
+        </mat-card-header>
+        <mat-card-content>
+            <perfect-scrollbar class="container">
+                <div class="container">
+                <div class="content">
+                <div id="block">
+                    <div *ngFor="let message of userMessages | async">
+                        <div *ngIf="isSender(message); else elseBlock" id="right">
+                        <small>{{message.time.toDate() | date: 'medium'}}</small>
+                        <br>
+                        <div id="um">{{message.content}}</div>
+                        <br>
+                        </div>
+                        <ng-template #elseBlock id="left">
+                            <small>{{message.time.toDate() | date: 'medium'}}</small>
+                            <br>
+                            <div id="om">{{message.content}}</div>
+                            <br>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </perfect-scrollbar>
+        </mat-card-content>
+        <mat-form-field>
+            <textarea matInput placeholder="content" [(ngModel)]="content" name="content" rows="7"></textarea>
+        </mat-form-field>
+        <button mat-raised-button color="accent" (click)="createMessage()" [disabled]="!content" id="send">
+            <mat-icon>send</mat-icon>
+        </button>
+      </mat-card>
+    </div>

@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <span routerLink="/recommand">SPACE</span>
+        <span class="spacer"></span>
+        <div *ngIf="auth.afAuth.authState | async as user; else showLogin">
+            <button mat-raised-button color="accent" routerLink="/personalcenter">
+                <mat-icon>face</mat-icon> Personal Center
+            </button>
+            <button mat-button (click)="auth.logout()" routerLink="/logout">Logout</button>
+        </div>
+        <ng-template #showLogin>
+            <button mat-button (click)="auth.login()">Login with Google</button>
+        </ng-template>
+    </mat-toolbar-row>
+</mat-toolbar>

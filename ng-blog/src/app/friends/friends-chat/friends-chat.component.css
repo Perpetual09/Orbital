@@ -1,0 +1,68 @@
+mat-card {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#fw {
+    margin-left: 250px;
+    margin-top: -20px;
+}
+
+mat-form-field {
+    width: 85%
+}
+
+#send {
+    float: right;
+    margin-top: 100px;
+}
+
+#right {
+    text-align: end;
+}
+
+#bg {
+    background-image: url("../../../assets/dashboard-bg.jpg");
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-attachment: fixed;
+     bottom: 0px;
+     height: 100%;
+     position: relative;
+}
+
+#um {
+    background-color: #7FFF00;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    display:inline-block !important;
+}
+
+#om {
+    background-color: #F5F5F5;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    display:inline-block !important;
+}
+
+.content {
+    width: 500px;
+    height: 300px;
+}
+
+.container {
+    position: relative;
+    margin: 0px auto;
+    padding: 0px;
+    width: 100%;
+    max-width: 38em;
+    height: 100%;
+}
+
+#block {
+    height: 310px;
+}

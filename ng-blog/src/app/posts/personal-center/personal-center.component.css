@@ -1,0 +1,33 @@
+#bg {
+    background-image: url("../../../assets/dashboard-bg.jpg");
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-attachment: fixed;
+     bottom: 0px;
+     height: 100%;
+     position: relative;
+}
+mat-card {
+    width: 265px;
+    margin-left: auto;
+    margin-right: auto;
+    top: 150px;
+}
+
+div {
+    text-align: center;
+    height: 50px;
+}
+
+#b1 {
+    width: 155px;
+}
+
+#b2 {
+    width: 155px;
+}
+
+#b3 {
+    width: 155px;
+}

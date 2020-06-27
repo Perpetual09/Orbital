@@ -1,0 +1,89 @@
+section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-rows: auto;
+    grid-gap: 10px;
+    margin: 0 auto;
+    max-width: 95%;
+}
+
+mat-card {
+    margin: 10px 0;
+    max-width: 700px;
+}
+
+img {
+    max-width: 100%;
+	max-height: 100%;
+}
+
+#imgblock {
+    text-align: center;
+	display: table-cell;
+}
+
+#rf {
+    float:right;
+}
+
+#bg {
+    background-image: url("../../../assets/image.jpg");
+     height: 100%;
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+}
+
+@keyframes fade-in{  
+    0%{ opacity: 0;}
+    100%{opacity:1;}
+}
+@-webkit-keyframes fade-in{
+    0%{ opacity: 0;}
+    100%{opacity:1;}
+}
+@-ms-keyframes fade-in{
+    0%{ opacity: 0;}
+    100%{opacity:1;}
+}
+@-o-keyframes fade-in{
+    0%{ opacity: 0;}
+    100%{opacity:1;}
+}
+@-moz-keyframes fade-in{
+    0%{ opacity: 0;}
+    100%{opacity:1;}
+}
+.animation{ 
+    opacity: 0;      
+    animation: fade-in 4s ease 0s 1;    
+    -webkit-animation: fade-in 5s ease 0s 1;
+    -moz-animation: fade-in 4s ease 0s 1;
+    -o-animation: fade-in 4s ease 0s 1;
+    -ms-animation: fade-in 4s ease 0s 1;
+    
+    animation-fill-mode:forwards;
+    -webkit-animation-fill-mode: forwards;  
+      -o-animation-fill-mode: forwards; 
+      -ms-animation-fill-mode: forwards;   
+      -moz-animation-fill-mode: forwards; 
+
+      font-size: 50px;
+      color: white;
+      font-weight:500;
+      height: 400px;
+      line-height: 400px;
+      text-align: center;
+      overflow: hidden; 
+}
+
+#tin {
+    display:block;
+    margin:0 auto;
+    margin-top: -130px;
+}
+
+mat-card {
+    background-color: #E3CAFA;
+    background-color:rgba(227, 202, 250, 0.4);
+}

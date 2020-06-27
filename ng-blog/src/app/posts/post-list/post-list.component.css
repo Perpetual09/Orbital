@@ -1,0 +1,44 @@
+section {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    grid-auto-rows: auto;
+    grid-gap: 10px;
+    margin: 0 auto;
+    max-width: 95%;
+}
+
+mat-card {
+    display: flex;
+    flex-flow: wrap;
+    margin: 10px 0;
+    max-width: 700px;
+}
+
+img {
+    max-width: 100%;
+	max-height: 100%;
+}
+
+#imgblock {
+    text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+#bg {
+    background-image: url("../../../assets/image.jpg");
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-attachment: fixed;
+     bottom: 0px;
+}
+
+mat-card {
+    background-color: #E3CAFA;
+    background-color:rgba(227, 202, 250, 0.4);
+}
+
+#delete {
+    margin-left: 320px;
+}
