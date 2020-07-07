@@ -16,5 +16,6 @@ img {
      background-size: cover;
      background-attachment: fixed;
      bottom: 0px;
-     height: 100%;
+     min-height: 550px;
 }
+

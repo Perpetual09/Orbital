@@ -23,7 +23,7 @@
         <img mat-card-image src="{{post.image}}" alt="{{post.title}}">
         <h2>{{post.title}}</h2>
         <p>
-          <small>Posted by {{post.author}} &bull; on {{post.published}}</small>
+          <small>Posted by {{post.author}} &bull; on {{post.published.toDate() | date: 'medium'}}</small>
         </p>
         <mat-card-content>
           <p>{{ post.content }}</p>

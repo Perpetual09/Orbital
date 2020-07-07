@@ -16,9 +16,7 @@ export class PostRecommandComponent implements OnInit {
   r1: number
   r2: number
   r3: number
-  p1: Post
-  p2: Post
-  p3: Post
+  ps: Post[] = new Array(3)
   recposts: Observable<Post[]>
   constructor(private postService: PostService, public auth: AuthService, private route: ActivatedRoute) { }
 
@@ -30,17 +28,19 @@ export class PostRecommandComponent implements OnInit {
   count(posts: Post[]) {
     this.total = posts.length - 1
     if(this.total > 3) {
-      this.r1 = Number((Math.random() * this.total).toFixed(0))
-      this.p1 = posts[this.r1]
+      do {
+        this.r1 = Number((Math.random() * this.total).toFixed(0))
+      } while(posts[this.r1].authorId === this.auth.currentUserId)
+      this.ps[0] = posts[this.r1]
       do {
         this.r2 = Number((Math.random() * this.total).toFixed(0))
-      } while(this.r2 === this.r1)
-      this.p2 = posts[this.r2]
+      } while(this.r2 === this.r1 || posts[this.r2].authorId === this.auth.currentUserId)
+      this.ps[1] = posts[this.r2]
       do {
         this.r3 = Number((Math.random() * this.total).toFixed(0))
-      } while(this.r3 === this.r1 || this.r3 === this.r2)
-      this.p3 = posts[this.r3]
-      this.recposts = of(new Array(this.p1, this.p2, this.p3))
+      } while(this.r3 === this.r1 || this.r3 === this.r2 || posts[this.r3].authorId === this.auth.currentUserId)
+      this.ps[2] = posts[this.r3]
+      this.recposts = of(this.ps)
     }
   }
   reloadPage() {
