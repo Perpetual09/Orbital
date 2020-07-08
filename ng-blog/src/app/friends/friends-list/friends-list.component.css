@@ -25,7 +25,6 @@ mat-expansion-panel {
     white-space:nowrap; 
 }
 
-#df {
-    margin-top: -45px;
-    float: right;
+#ch {
+    margin-left: 70px;
 }

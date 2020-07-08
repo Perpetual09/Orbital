@@ -19,6 +19,7 @@ export class FriendsChatComponent implements OnInit {
   userMessages: Observable<Message[]>
   receiverId: string
   receiver: string
+  receiverName: string
   friends: Observable<Friend[]>
   content: string
 
@@ -41,9 +42,11 @@ export class FriendsChatComponent implements OnInit {
     for(i = 0; i < friends.length; i++) {
       if(friends[i].personAId === this.receiverId) {
         this.receiver = friends[i].personA
+        this.receiverName = friends[i].nameAToB
       }
       if(friends[i].personBId === this.receiverId) {
-        this.receiver = friends[i].personBId
+        this.receiver = friends[i].personB
+        this.receiverName = friends[i].nameBToA
       }
     }
   }

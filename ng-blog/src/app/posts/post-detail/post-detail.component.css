@@ -1,6 +1,6 @@
 mat-card {
     margin: auto;
-    max-width: 700px;
+    max-width: 900px;
   }
   mat-form-field {
     width: 100%;
@@ -12,11 +12,14 @@ mat-card {
     background-size: cover;
     background-attachment: fixed;
     bottom: 0px;
+    min-height: 550px;
 }
 
 mat-card {
-  background-color: #E3CAFA;
-  background-color:rgba(227, 202, 250, 0.4);
+  background-color:rgba(255,255,255, 0.7);
 }
 
+#txt {
+  font-size: 110%
+}
 

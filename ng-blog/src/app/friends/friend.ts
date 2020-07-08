@@ -4,4 +4,6 @@ export class Friend {
     personAId: string
     personB: string
     personBId: string
+    nameAToB: string
+    nameBToA: string
 }

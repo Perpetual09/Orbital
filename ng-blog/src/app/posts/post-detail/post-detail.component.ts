@@ -56,7 +56,9 @@ export class PostDetailComponent implements OnInit {
       personA: this.auth.authState.displayName || this.auth.authState.email,
       personAId: this.auth.currentUserId,
       personB: this.post.author,
-      personBId: this.post.authorId
+      personBId: this.post.authorId,
+      nameAToB: this.auth.currentUserId,
+      nameBToA: this.post.authorId,
     }
     this.friendService.addFriend(data)
     window.alert("add friends successfully")

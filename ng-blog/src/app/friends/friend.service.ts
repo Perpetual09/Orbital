@@ -34,4 +34,7 @@ export class FriendService {
   delete(id: string) {
     return this.getFriend(id).delete();
   }
+  update(id: string, formData) {
+    return this.getFriend(id).update(formData);
+  }
 }
