@@ -5,8 +5,11 @@ mat-card {
 }
 
 #fw {
-    margin-left: 470px;
-    margin-top: -20px;
+    float: right
+}
+
+#blk {
+    width: 550px;
 }
 
 mat-form-field {

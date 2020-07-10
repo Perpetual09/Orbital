@@ -27,5 +27,16 @@ export class MessageService {
   addMessage(data: Message) {
     this.messagesCollection.add(data)
   }
+
+  getMessage(id: string) {
+    return this.afs.doc<Message>(`messages/${id}`)
+  }
+
+  update(id: string) { 
+    const data = {
+      read: true
+    }
+    return this.getMessage(id).update(data);
+  }
   
 }

@@ -6,4 +6,5 @@ export class Message {
     receiverId: string
     content: string
     time: Date
+    read: boolean
 }

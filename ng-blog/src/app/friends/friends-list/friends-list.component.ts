@@ -6,7 +6,8 @@ import { FriendService } from '../friend.service';
 import { filter } from 'rxjs/operators';
 import { AuthService } from 'src/app/core/auth.service';
 import { User } from '../user';
-import { stringify } from 'querystring';
+import { MessageService } from '../message.service';
+import { Message } from '../message';
 
 @Component({
   selector: 'app-friends-list',
@@ -19,11 +20,23 @@ export class FriendsListComponent implements OnInit {
   uFriends: Observable<User[]>
   ids: string[] = new Array()
   name: string
+  unreadMessages: Message[]
 
-  constructor(private friendService: FriendService, public auth: AuthService) { }
+  constructor(private messageServeice: MessageService, private friendService: FriendService, public auth: AuthService) { }
 
   ngOnInit(): void {
     this.friends = this.friendService.getFriends()
+    this.messageServeice.getMessages().subscribe(x => this.getUnreadMessages(x))
+  }
+
+  getUnreadMessages(messages: Message[]) {
+    var i;
+    this.unreadMessages = new Array(messages.length)
+    for(i = 0; i < messages.length; i++) {
+      if(messages[i].receiverId === this.auth.currentUserId && !messages[i].read) {
+        this.unreadMessages.push(messages[i])
+      }
+    }
     this.friends.subscribe(x => this.userFriends(x))
   }
 
@@ -38,9 +51,12 @@ export class FriendsListComponent implements OnInit {
   }
 
   mapper(f: Friend) {
+    var read = true
+    var i;
     const u = {
       name: '',
-      id: ''
+      id: '',
+      read: read
     }
     if(f.personAId === this.auth.currentUserId) {
       u.name = f.nameBToA
@@ -48,6 +64,12 @@ export class FriendsListComponent implements OnInit {
     } else {
       u.name = f.nameAToB
       u.id = f.personAId
+    }
+    for(i = 0; i < this.unreadMessages.length; i++) {
+      if(this.unreadMessages[i] !== undefined && this.unreadMessages[i].senderId === u.id) {
+        u.read = false;
+        return u;
+      }
     }
     return u;
   }
