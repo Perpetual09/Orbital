@@ -25,6 +25,6 @@ mat-expansion-panel {
     white-space:nowrap; 
 }
 
-#ch {
-    margin-left: 70px;
+#bts {
+    float: right
 }

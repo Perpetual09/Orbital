@@ -32,8 +32,6 @@ export class PostRecommandComponent implements OnInit {
     this.posts = this.postService.getPosts()
     this.friends = this.friendService.getFriends()
     this.friends.subscribe(x => this.userFriends(x))
-    this.posts.subscribe(x => this.count(x))
-    this.messageServeice.getMessages().subscribe(x => this.checkUnread(x))
   }
 
   count(posts: Post[]) {
@@ -69,6 +67,7 @@ export class PostRecommandComponent implements OnInit {
     } else {
       console.log("Inadequate data in database, please add more posts.")
     }
+    this.messageServeice.getMessages().subscribe(x => this.checkUnread(x))
   }
 
   userFriends(friends: Friend[]) {
@@ -82,6 +81,7 @@ export class PostRecommandComponent implements OnInit {
         this.ids.push(friends[i].personAId)
       }
     }
+    this.posts.subscribe(x => this.count(x))
   }
 
   checkUnread(messages: Message[]) {
@@ -99,6 +99,6 @@ export class PostRecommandComponent implements OnInit {
   }
 
   alert() {
-    window.alert("you have unread messages")
+    window.alert("Notice: you have unread messages")
   }
 }

@@ -2,34 +2,36 @@
     <br>
     <mat-card>
         <mat-card-header>
-          <mat-card-title>Chat</mat-card-title>
-          <mat-card-subtitle>
-              {{receiverName}}
+            <mat-card-title>Chat</mat-card-title>
+            <mat-card-subtitle>
+                {{receiverName}}
             </mat-card-subtitle>
-          <div id="blk"><button mat-button routerLink="/friendlist" id="fw"><mat-icon>forward</mat-icon></button></div>
+            <div id="blk"><button mat-button routerLink="/friendlist" id="fw">
+                    <mat-icon>forward</mat-icon>
+                </button></div>
         </mat-card-header>
         <mat-card-content>
             <perfect-scrollbar class="container">
                 <div class="container">
-                <div class="content">
-                <div id="block">
-                    <div *ngFor="let message of userMessages | async">
-                        <div *ngIf="isSender(message); else elseBlock" id="right">
-                        <small>{{message.time.toDate() | date: 'medium'}}</small>
-                        <br>
-                        <div id="um">{{message.content}}</div>
-                        <br>
+                    <div class="content">
+                        <div id="block">
+                            <div *ngFor="let message of userMessages | async">
+                                <div *ngIf="isSender(message); else elseBlock" id="right">
+                                    <small>{{message.time.toDate() | date: 'medium'}}</small>
+                                    <br>
+                                    <div id="um">{{message.content}}</div>
+                                    <br>
+                                </div>
+                                <ng-template #elseBlock id="left">
+                                    <small>{{message.time.toDate() | date: 'medium'}}</small>
+                                    <br>
+                                    <div id="om">{{message.content}}</div>
+                                    <br>
+                                </ng-template>
+                            </div>
                         </div>
-                        <ng-template #elseBlock id="left">
-                            <small>{{message.time.toDate() | date: 'medium'}}</small>
-                            <br>
-                            <div id="om">{{message.content}}</div>
-                            <br>
-                        </ng-template>
                     </div>
                 </div>
-            </div>
-            </div>
             </perfect-scrollbar>
         </mat-card-content>
         <mat-form-field>
@@ -38,5 +40,5 @@
         <button mat-raised-button color="accent" (click)="createMessage()" [disabled]="!content" id="send">
             <mat-icon>send</mat-icon>
         </button>
-      </mat-card>
-    </div>
+    </mat-card>
+</div>

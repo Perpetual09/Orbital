@@ -19,7 +19,6 @@ export class FriendsListComponent implements OnInit {
   arr: Friend[]
   uFriends: Observable<User[]>
   ids: string[] = new Array()
-  name: string
   unreadMessages: Message[]
 
   constructor(private messageServeice: MessageService, private friendService: FriendService, public auth: AuthService) { }
@@ -80,19 +79,19 @@ export class FriendsListComponent implements OnInit {
   }
 
   update(i: number) {
+    var newName = window.prompt("Please enter the name:")
     var formData
     const f = this.arr[i]
     if(f.personAId === this.auth.currentUserId) {
       formData = {
-        nameBToA: this.name
+        nameBToA: newName
       }
     } else {
       formData = {
-        nameAToB: this.name
+        nameAToB: newName
       }
     }
     this.friendService.update(this.ids[i], formData)
-    this.name=''
   }
 
   reloadPage() {

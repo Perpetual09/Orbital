@@ -5,7 +5,7 @@ import { FriendService } from '../../friends/friend.service'
 import {Post} from '../post'
 import { AuthService } from 'src/app/core/auth.service';
 import { Friend } from 'src/app/friends/friend';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-post-detail',
@@ -15,13 +15,14 @@ import { Observable } from 'rxjs';
 export class PostDetailComponent implements OnInit {
 
   post: Post
+  posts: Observable<Post[]>
   editing: boolean = false
   friends: Observable<Friend[]>
   relation: boolean = false
   self: boolean = false
   id: string
 
-  constructor(private route: ActivatedRoute, private postServeice: PostService, private friendService: FriendService,
+  constructor(private route: ActivatedRoute, private postService: PostService, private friendService: FriendService,
     private router: Router, public auth: AuthService) { }
 
   ngOnInit(): void {
@@ -32,12 +33,13 @@ export class PostDetailComponent implements OnInit {
 
   getPost() {
     const id = this.route.snapshot.paramMap.get('id')
-    this.postServeice.getPostData(id).subscribe(data => this.post = data)
+    this.postService.getPostData(id).subscribe(data => this.post = data)
+    this.postService.getPosts().subscribe(data => this.posts = of(data.filter(x => x.id === id)))
   } 
 
   delete() {
     const id = this.route.snapshot.paramMap.get("id");
-    this.postServeice.delete(id)
+    this.postService.delete(id)
     this.router.navigate(["/blog"])
   }
 
@@ -47,7 +49,7 @@ export class PostDetailComponent implements OnInit {
       content: this.post.content
     }
     const id = this.route.snapshot.paramMap.get("id");
-    this.postServeice.update(id, formData)
+    this.postService.update(id, formData)
     this.editing = false
   }
 

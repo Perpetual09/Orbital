@@ -1,24 +1,24 @@
 <div id="bg">
-<div *ngIf="auth.afAuth.authState | async as user; else showLogin">
-<section>
-  <p *ngFor="let post of userposts | async" >
-    <mat-card>
-      <mat-card-content routerLink="{{post.id}}">
-        <div id="imgblock">
-          <img mat-card-image src="{{post.image}}" alt="{{post.title}}" width="520" height="320">
-        </div>
-        <h2>{{post.title}}</h2>
-        <p>
-          <small>Posted by {{post.author}} &bull; on {{post.published.toDate() | date: 'medium'}}</small>
-        </p>
-      </mat-card-content>
-      <mat-card-actions align="end">
-        <button mat-icon-button (click)="delete(post.id)" id="delete">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </mat-card-actions>
-    </mat-card>
-  </section>
-</div>
-<ng-template #showLogin>Login to see your posts</ng-template>
+  <div *ngIf="auth.afAuth.authState | async as user; else showLogin">
+    <section>
+      <p *ngFor="let post of userposts | async">
+        <mat-card>
+          <mat-card-content routerLink="{{post.id}}">
+            <div id="imgblock">
+              <img mat-card-image src="{{post.image}}" alt="{{post.title}}" width="520" height="320">
+            </div>
+            <h2>{{post.title}}</h2>
+            <p>
+              <small>Posted by {{post.author}} &bull; on {{post.published.toDate() | date: 'medium'}}</small>
+            </p>
+          </mat-card-content>
+          <mat-card-actions align="end">
+            <button mat-icon-button (click)="delete(post.id)" id="delete">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+    </section>
+  </div>
+  <ng-template #showLogin>Login to see your posts</ng-template>
 </div>

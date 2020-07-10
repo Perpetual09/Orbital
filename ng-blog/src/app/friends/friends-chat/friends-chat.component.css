@@ -32,8 +32,8 @@ mat-form-field {
      background-size: cover;
      background-attachment: fixed;
      bottom: 0px;
-     height: 100%;
      position: relative;
+     min-height: 550px;
 }
 
 #um {

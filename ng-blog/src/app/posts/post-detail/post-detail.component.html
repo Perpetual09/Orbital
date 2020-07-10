@@ -1,29 +1,29 @@
 <div id="bg">
-<ng-container *ngIf="post">
+  <div *ngFor="let post of posts | async">
     <div [hidden]="!editing">
       <h2>Edit mode</h2>
       <mat-card>
         <h1>Edit Post</h1>
-          <mat-form-field>
-            <input matInput placeholder="Post title" [(ngModel)]="post.title" name="title">
-          </mat-form-field>
-          <br>
-          <mat-form-field>
-            <textarea matInput placeholder="Post content" [(ngModel)]="post.content" name="content" rows="10"></textarea>
-          </mat-form-field>
-          <br>
-          <button mat-raised-button (click)="updatePost()" color="accent">Save</button>
-          <button mat-button (click)="editing=false" *ngIf="editing">Cancel</button>
-    </mat-card>
+        <mat-form-field>
+          <input matInput placeholder="Post title" [(ngModel)]="post.title" name="title">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <textarea matInput placeholder="Post content" [(ngModel)]="post.content" name="content" rows="10"></textarea>
+        </mat-form-field>
+        <br>
+        <button mat-raised-button (click)="updatePost()" color="accent">Save</button>
+        <button mat-button (click)="editing=false" *ngIf="editing">Cancel</button>
+      </mat-card>
     </div>
-  
+
     <div [hidden]="editing">
       <br>
       <mat-card>
         <img mat-card-image src="{{post.image}}" alt="{{post.title}}">
         <h1>{{post.title}}</h1>
         <p>
-          <small>Posted by {{post.author}} &bull; on {{post.published}}</small>
+          <small>Posted by {{post.author}} &bull; on {{post.published.toDate() | date: 'medium'}}</small>
         </p>
         <br>
         <mat-card-content>
@@ -40,14 +40,17 @@
         <div *ngIf="!self">
           <div *ngIf="!relation; else elseBlock">
             <button mat-raised-button color="primary" (click)="addFriend()">
-              <mat-icon>person_add</mat-icon> add friends</button>
+              <mat-icon>person_add</mat-icon> add friends
+            </button>
           </div>
           <ng-template #elseBlock>
             <button mat-raised-button color="primary" (click)="deleteFriend()">
-              <mat-icon>delete</mat-icon> delete friends</button>
+              <mat-icon>delete</mat-icon> delete friends
+            </button>
           </ng-template>
         </div>
       </mat-card>
     </div>
-  </ng-container>
+
+    <div>
 </div>
