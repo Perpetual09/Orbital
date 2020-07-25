@@ -88,7 +88,8 @@ export class PostRecommandComponent implements OnInit {
     var i;
     for(i = 0; i < messages.length; i++) {
       if(messages[i].receiverId === this.auth.currentUserId && !messages[i].read) {
-        this.alert()
+        console.log(messages)
+        window.alert("Notice: you have unread messages")
         break
       }
     }
@@ -96,9 +97,5 @@ export class PostRecommandComponent implements OnInit {
   
   reloadPage() {
    window.location.reload();
-  }
-
-  alert() {
-    window.alert("Notice: you have unread messages")
   }
 }

@@ -2,10 +2,12 @@
     <div *ngIf="auth.afAuth.authState | async as user; else showLogin">
         <div *ngIf="total <= 3; else random">
             <section>
-                <p *ngFor="let post of posts | async">
+                <p *ngFor="let post of recposts | async">
                     <mat-card>
-                        <mat-card-content routerLink="{{post.id}}">
-                            <img mat-card-image src="{{post.image}}" alt="{{post.title}}">
+                        <mat-card-content routerLink="../blog/{{post.id}}">
+                            <div id="imgblock">
+                                <img mat-card-image src="{{post.image}}" alt="{{post.title}}" width="520" height="320">
+                            </div>
                             <h2>{{post.title}}</h2>
                             <p>
                                 <small>Posted by {{post.author}} &bull; on
@@ -26,7 +28,7 @@
                             </div>
                             <h2>{{post.title}}</h2>
                             <p>
-                                <small>Posted by {{post.author}} &bull; on
+                                <small>Posted by {{post.authorId}} &bull; on
                                     {{post.published.toDate() | date: 'medium'}}</small>
                             </p>
                         </mat-card-content>
